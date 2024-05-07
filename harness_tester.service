@@ -1,0 +1,19 @@
+# This is a systemd service unit file for the Harness Tester application.
+# It starts the main.py script after system logs initialization.
+# Change ExecStart and WorkingDirectory if needed 
+
+[Unit]
+Description=Harness Tester Service
+After=syslog.target 
+
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 main.py
+WorkingDirectory=/path/to/project
+StandardOutput=file:output.log
+StandardError=file:error.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
